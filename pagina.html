@@ -1,0 +1,253 @@
+<html>
+  <style type="text/css">
+    .home {
+      margin: 0 auto 100px auto;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+
+    .paragrafo {
+      text-align: justify;
+    }
+
+    h1 {
+      font-size: 34px;
+    }
+
+    h2 {
+      font-size: 28px;
+    }
+
+    h3 {
+      font-size: 25px;
+    }
+
+    p {
+      font-size: 16px;
+    }
+
+    .legenda {
+      font-size: 12px;
+      font-style: italic;
+      margin: 0px 0px 40px 0px;
+      padding: 0px;
+      text-align: center;
+    }
+
+    .imgConfig {
+      width: 80%;
+      padding: 1.5px;
+      -webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.5);
+      --moz-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.5);
+      -box-shadow: 9px 7px 5px rgba(224, 178, 178, 0.5);
+      display: block;
+      margin: 30px auto 60px auto;
+    }
+
+    .important {
+      background-image: url("http://wiki.sgp.net.br/lib/exe/fetch.php?media=icons:important.png");
+      background-color: #fffecd;
+    }
+
+    .note {
+      background-image: url("http://wiki.sgp.net.br/lib/exe/fetch.php?media=icons:note.png");
+      background-color: #ebefff;
+    }
+
+    .tip {
+      background-image: url("http://wiki.sgp.net.br/lib/exe/fetch.php?media=icons:tip.png");
+      background-color: #daffda;
+    }
+
+    .warning {
+      background-image: url("http://wiki.sgp.net.br/lib/exe/fetch.php?media=icons:warning.png");
+      background-color: #fddedd;
+    }
+
+    .noteBase {
+      margin: 2em;
+      margin-left: auto;
+      margin-right: auto;
+      width: 70% !important;
+      min-height: 40px;
+      clear: both;
+      text-align: justify;
+      vertical-align: middle;
+      border-collapse: collapse;
+      padding: 10px 30px 10px 80px;
+      background-position: 20px 50%;
+      background-repeat: no-repeat;
+      -moz-border-radius: 20px;
+      -khtml-border-radius: 20px;
+      border-radius: 20px;
+    }
+
+    .flex-container {
+      display: flex;
+      gap: 50px
+    }
+  </style>
+</head>
+
+<body>
+  <center><h1>Integração V-Router</h1></center>
+  <p class="paragrafo">
+    <b>Dados necessários:</b> 
+  </p>
+
+  <div class="flex-container">
+    <div>
+      <p>
+        <b>SGP Nuvem:</b>
+      </p>
+      <p>
+        - IP Público
+      </p>
+      <p>
+        - Porta Web (Padrão 1900)
+      </p>
+      <p>
+        - Porta SSH
+      </p>
+      <p>
+        - Usuário e Senha de Acesso
+      </p>
+      <p>
+        - Portas Radius: solicitar ao Suporte Técnico do SGP
+      </p>
+    </div>
+    <div>
+      <p>
+        <b>SGP Local:</b>
+      </p>
+      <p>
+        - IP Público ou Privado
+      </p>
+      <p>
+        - Porta Web (Padrão 1900)
+      </p>
+      <p>
+        - Porta SSH
+      </p>
+      <p>
+        - Usuário e Senha de Acesso
+      </p>
+      <p>
+        - Porta Autenticação: 1812
+      </p>
+      <p>
+        - Porta Contabilidade: 1813
+      </p>
+    </div> 
+  </div>
+
+  <p class="paragrafo">
+    A comunicação no SGP (NAS) é feita pela Porta SSH, no entanto, acessamos o equipamento via Web para realizar a configuração do Radius.
+  </p>
+
+  <p class="paragrafo">
+    <b>Passos:</b><br>
+    1. PPPoE Server <br>
+    1.1 RADIUS <br>
+    1.1.1 Adicionar Radius (Autenticação) <br>
+    1.1.1.1 Endereço: IP do Servidor Radius <br>
+    1.1.1.2 Porta de Autenticação: 1812 (Se SGP Nuvem: Contactar o Suporte) <br>
+    1.1.1.3 Porta de Contabilidade: 1813 (Se SGP Nuvem: Contactar o Suporte) <br>
+    1.1.1.4 Chave SECRET: sgp@radius <br>
+    1.1.1.5 Comentário: Servidor Radius SGP
+  </p>
+
+  <p class="paragrafo">
+    Exemplo na imagem a seguir:
+  </p>
+
+  <img
+    class="imgConfig"
+    src="https://wiki.sgp.net.br/lib/exe/fetch.php?t=1649094134&w=500&h=329&tok=b4285d&media=tecnico:vrouter:v_router_parte_1.jpg"
+    alt="Imagem de exemplo"
+  />
+
+  <p class="paragrafo">
+    1.1.1 Adicionar Radius (Opções): <br>
+    1.1.1.1 Porta de Controle: 3799 (Padrão do SGP)
+  </p>
+
+  <img
+    class="imgConfig"
+    src="https://wiki.sgp.net.br/lib/exe/fetch.php?t=1649094152&w=500&h=390&tok=9d769d&media=tecnico:vrouter:v_router_parte_2.jpg"
+    alt="Alterações"
+  />
+
+  <center>
+    <p class="paragrafo">
+      <b>Para salvar as alterações, só clicar em adicionar ou salvar.</b>
+    </p>
+  </center>
+
+  <p class="paragrafo">
+    Boa Prática <br>
+    Definir Ip do NAS no Source-NAT:
+  </p>
+
+  <img
+    class="imgConfig"
+    src="https://wiki.sgp.net.br/lib/exe/fetch.php?t=1649094152&w=500&h=296&tok=7ad5f7&media=tecnico:vrouter:v_router_parte_3.jpg"
+    alt="Definição do Ip do NAS no Source-NAT"
+  />
+
+  <center>
+    <h2>
+      Administração -> Cadastro -> Radius (NAS)
+    </h2>
+  </center>
+
+  <p class="paragrafo">
+    Importante: Os campos em negrito, são os mínimos necessários para o cadastro do NAS, no entanto há mais campos essenciais: <br>
+    -> POP (sem ele no cadastro do cliente não é possível atribuir a um NAS); <br>
+    -> Tipo de Acesso (Extra), Porta, Usuário e Senha (necessários para o SGP acessar o equipamento);
+  </p>
+
+  <img
+    class="imgConfig"
+    src="https://wiki.sgp.net.br/lib/exe/fetch.php?t=1649094153&w=499&h=342&tok=474355&media=tecnico:vrouter:v_router_parte_4.jpg"
+    alt="Configuração do Radius - NAS Parte 1"
+  />
+
+  <img
+    class="imgConfig"
+    src="https://wiki.sgp.net.br/lib/exe/fetch.php?t=1649094153&w=500&h=388&tok=8a1f3c&media=tecnico:vrouter:v_router_parte_5.jpg"
+    alt="Configuração do Radius - NAS Parte 2"
+  />
+
+  <p class="paragrafo">
+    Após essas configurações, só salvar. <br>
+    Após alteração/cadastro de NAS, necessário informar ao Servidor Radius de que ocorreu uma alteração. <br>
+    Para isso, basta reiniciar o radius através do Botão Azul “Reload Radius”.
+  </p>
+
+  <img
+    class="imgConfig"
+    src="https://wiki.sgp.net.br/lib/exe/fetch.php?t=1649094153&w=500&h=96&tok=51ddd6&media=tecnico:vrouter:v_router_parte_6.jpg"
+    alt="Botão Reload Radius"
+  />
+
+  <p class="paragrafo">
+    Para testar se está comunicando corretamente, só ir em Opções depois em <b>Detalhes Conexão</b>.
+  </p>
+
+  <img
+    class="imgConfig"
+    src="https://wiki.sgp.net.br/lib/exe/fetch.php?t=1649094153&w=500&h=116&tok=b5f8b7&media=tecnico:vrouter:v_router_parte_7.jpg"
+    alt="Botão Detalhes Conexão"
+  />
+
+  <p class="paragrafo">
+    A comunicação correta, irá aparecer seus clientes como na imagem a seguir:
+  </p>
+
+  <img
+    class="imgConfig"
+    src="https://wiki.sgp.net.br/lib/exe/fetch.php?t=1649094153&w=500&h=251&tok=9235df&media=tecnico:vrouter:v_router_parte_8.jpg"
+    alt="Detalhes do NAS"
+  />
+</body>
+</html>
